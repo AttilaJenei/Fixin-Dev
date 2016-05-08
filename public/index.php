@@ -6,16 +6,28 @@
 
 $phpStartTime = microtime(true);
 
-// Config
-$hosts = array('www.fixin-dev.attila');
-if (!in_array($_SERVER['HTTP_HOST'], $hosts)) {
+// Check host is allowed
+$hosts = ['www.fixin-dev.attila'];
+$requestedHost = $_SERVER['HTTP_HOST'];
+
+if (!in_array($requestedHost, $hosts)) {
     header("HTTP/1.1 404 Not Found");
-    
+    echo '<!DOCTYPE html><html><body><h1>Not Found</h1></body></html>';
+
     exit;
 }
 
+// Load config
+$topPath = dirname(__DIR__);
+$config = require "{$topPath}/config/{$requestedHost}.php";
+
+// Autoloader
+require "{$fixinClassesPath}/Fixin/Loader/SimpleLoader.php";
+$autoloader = new \Fixin\Loader\SimpleLoader($config['loader']['namespaces']);
+$autoloader->register();
+
 // Application
-$application = new Fixin\Appplication($config);
+$application = new \Fixin\Application\Application($config);
 $application->run();
 
-echo 'Run time: ' . $phpStartTime - microtime(true) . 'ms';
+echo 'Run: ' . number_format((microtime(true) - $phpStartTime) * 1000, 4) . 'ms, ' . memory_get_usage() . ' / ' . memory_get_peak_usage() . ' bytes';
