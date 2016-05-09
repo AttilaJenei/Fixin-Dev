@@ -23,7 +23,7 @@ $config = require "{$topPath}/config/{$requestedHost}.php";
 
 // Autoloader
 require "{$fixinClassesPath}/Fixin/Loader/SimpleLoader.php";
-$autoloader = new \Fixin\Loader\SimpleLoader($config['loader']['namespaces']);
+$autoloader = new \Fixin\Loader\SimpleLoader($config['loader']['prefixes']);
 $autoloader->register();
 
 // Application
