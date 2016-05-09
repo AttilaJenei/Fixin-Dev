@@ -22,7 +22,7 @@ $topPath = dirname(__DIR__);
 $config = require "{$topPath}/config/{$requestedHost}.php";
 
 // Autoloader
-require "{$fixinClassesPath}/Fixin/Loader/SimpleLoader.php";
+require "{$fixinPath}/classes/Fixin/Loader/SimpleLoader.php";
 $autoloader = new \Fixin\Loader\SimpleLoader($config['loader']['prefixes']);
 $autoloader->register();
 

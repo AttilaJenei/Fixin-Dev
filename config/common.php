@@ -4,11 +4,11 @@
  * @copyright  Copyright (c) 2016 Attila Jenei
  */
 
-return array_replace_recursive(require "{$fixinClassesPath}/../config/default.php", array(
-    'loader' => array(
-        'prefixes' => array(
+return array_replace_recursive(require "{$fixinPath}/config/default.php", [
+    'loader' => [
+        'prefixes' => [
             'App' => "{$topPath}/classes/App",
-            'Fixin' => "{$fixinClassesPath}/Fixin",
-        )
-    ),
-));
+            'Fixin' => "{$fixinPath}/classes/Fixin",
+        ]
+    ],
+]);
