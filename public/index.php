@@ -18,7 +18,7 @@ if (!in_array($requestedHost, $hosts)) {
 
     exit;
 }
-
+/**/
 // Load config
 $topPath = dirname(__DIR__);
 $config = require "{$topPath}/config/{$requestedHost}.php";
@@ -27,9 +27,12 @@ $config = require "{$topPath}/config/{$requestedHost}.php";
 require "{$fixinPath}/classes/Fixin/Loader/SimpleLoader.php";
 $autoloader = new \Fixin\Loader\SimpleLoader($config['loader']['prefixes']);
 $autoloader->register();
+/**/
 
+// $application = include '../../Fixin/cheats/web.php';
 // Application
 $application = new \Fixin\Application\Application($config);
 $application->run();
+
 
 echo 'Run: ' . number_format((microtime(true) - $phpStartTime) * 1000, 4) . 'ms, ' . (memory_get_usage() - $phpStartMem) . ' / ' . (memory_get_peak_usage() - $phpStartMemPeak) . ' bytes';

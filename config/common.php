@@ -4,7 +4,7 @@
  * @copyright  Copyright (c) 2016 Attila Jenei
  */
 
-return array_replace_recursive(require "{$fixinPath}/config/default.php", [
+return array_replace_recursive(require "{$fixinPath}/config/web.php", [
     'loader' => [
         'prefixes' => [
             'App' => "{$topPath}/classes/App",
