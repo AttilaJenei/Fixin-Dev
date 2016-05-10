@@ -4,6 +4,8 @@
  * @copyright Copyright (c) 2016 Attila Jenei
  */
 
+$phpStartMem = memory_get_usage();
+$phpStartMemPeak = memory_get_peak_usage();
 $phpStartTime = microtime(true);
 
 // Check host is allowed
@@ -30,4 +32,4 @@ $autoloader->register();
 $application = new \Fixin\Application\Application($config);
 $application->run();
 
-echo 'Run: ' . number_format((microtime(true) - $phpStartTime) * 1000, 4) . 'ms, ' . memory_get_usage() . ' / ' . memory_get_peak_usage() . ' bytes';
+echo 'Run: ' . number_format((microtime(true) - $phpStartTime) * 1000, 4) . 'ms, ' . (memory_get_usage() - $phpStartMem) . ' / ' . (memory_get_peak_usage() - $phpStartMemPeak) . ' bytes';
