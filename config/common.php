@@ -11,4 +11,12 @@ return array_replace_recursive(require "{$fixinPath}/config/default.php", [
             'Fixin' => "{$fixinPath}/classes/Fixin",
         ]
     ],
+    'resourceManager' => [
+        'abstractFactories' => [
+            'prefixFallback' => [
+                'class' => 'Fixin\ResourceManager\AbstractFactory\PrefixFallbackAbstractFactory',
+                'searchOrder' => ['App', 'Fixin']
+            ]
+        ]
+    ]
 ]);
