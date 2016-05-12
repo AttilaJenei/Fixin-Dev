@@ -10,7 +10,7 @@ $phpStartTime = microtime(true);
 
 // Check host is allowed
 $hosts = ['www.fixin-dev.attila'];
-$requestedHost = $_SERVER['HTTP_HOST'];
+$requestedHost = $_SERVER['SERVER_NAME'];
 
 if (!in_array($requestedHost, $hosts)) {
     header("HTTP/1.1 404 Not Found");
@@ -18,7 +18,7 @@ if (!in_array($requestedHost, $hosts)) {
 
     exit;
 }
-/*
+
 // Load config
 $topPath = dirname(__DIR__);
 $config = require "{$topPath}/config/{$requestedHost}.php";
@@ -27,11 +27,10 @@ $config = require "{$topPath}/config/{$requestedHost}.php";
 require "{$fixinPath}/classes/Fixin/Base/Autoloader/SimpleAutoloader.php";
 $autoloader = new \Fixin\Base\Autoloader\SimpleAutoloader($config['loader']['prefixes']);
 $autoloader->register();
-/**/
 
-$application = include '../../Fixin/cheats/web.php';
+// $application = include '../../Fixin/cheats/web.php';
 // Application
-// $application = new \Fixin\Application\Application($config);
+$application = new \Fixin\Application\Application($config);
 $application->run();
 
 
