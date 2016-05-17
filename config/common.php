@@ -14,7 +14,9 @@ return array_replace_recursive(require "{$fixinPath}/config/web.php", [
     'resourceManager' => [
         'abstractFactories' => [
             'prefixFallback' => [
-                'searchOrder' => ['App', 'Fixin']
+                'options' => [
+                    'searchOrder' => ['App', 'Fixin']
+                ]
             ]
         ]
     ]
