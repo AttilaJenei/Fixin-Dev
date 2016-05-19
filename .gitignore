@@ -1,4 +1,5 @@
 .svn
 .DS_Store
 _work
-/config/*.attila.php
+/config/**/*
+!/config/common.php
