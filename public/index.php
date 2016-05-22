@@ -28,7 +28,6 @@ $phpStartTime = microtime(true);
     // Autoloader
     require "{$fixinPath}/classes/Fixin/Base/Autoloader/SimpleAutoloader.php";
     $autoloader = new \Fixin\Base\Autoloader\SimpleAutoloader($config['loader']['prefixes']);
-    $autoloader->register();
 */
     $application = include '../../Fixin/cheats/web.php';
     // Application
