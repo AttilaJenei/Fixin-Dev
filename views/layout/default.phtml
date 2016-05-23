@@ -6,7 +6,8 @@
     <body>
 Test
 <?= $test ?>
-<?= ($_->escapeHtml)('teszt') ?>
-<?= ($_->escapeHtml)('proba') ?>
+<?= ($_->escapeHtml)('teszt & test') ?>
+<?= ($_->escapeHtml)('<proba>') ?>
+<?= ($_->escapeHtml)('pr"o`b\'a') ?>
     </body>
 </html>
