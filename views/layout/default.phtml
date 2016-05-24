@@ -9,5 +9,24 @@ Test
 <?= ($_->escapeHtml)('teszt & test') ?>
 <?= ($_->escapeHtml)('<proba>') ?>
 <?= ($_->escapeHtml)('pr"o`b\'a') ?>
+        <div <?= ($_->htmlAttributes)(['style' => ['width' => 80, 'height' => '90px'], 'class' => 'Main']) ?>>
+            Proba
+        </div>
+        <script>
+        <?php $input = <<<INPUT
+bar&quot;; alert(&quot;Meow!&quot;); var xss=&quot;true
+INPUT;
+?>
+            var test1 = <?= ($_->escapeJs)('proba1'); ?>;
+            var test2 = <?= ($_->escapeJs)('"not" know & <>'); ?>;
+            var test6 = <?= ($_->escapeJs)($input); ?>;
+            var test6 = <?= ($_->escapeJs)(null); ?>;
+
+            var test3 = <?= ($_->jsVariable)("'not' know & <>"); ?>;
+            var test3 = <?= ($_->jsVariable)(null); ?>;
+            var test4 = <?= ($_->jsVariable)(['a', 'b', 'c']); ?>;
+            var test5 = <?= ($_->jsVariable)(['a' => '1', 'b', 'c' => 2]); ?>;
+            var test7 = <?= ($_->jsVariable)($input); ?>;
+        </script>
     </body>
 </html>
