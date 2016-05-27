@@ -12,6 +12,15 @@ return array_replace_recursive(require "{$fixinPath}/config/web.php", [
         ]
     ],
     'resourceManager' => [
+        'definitions' => [
+            'View\View\FileResolver' => [
+                'options' => [
+                    'paths' => [
+                        "{$topPath}/views",
+                    ]
+                ]
+            ]
+        ],
         'abstractFactories' => [
             'prefixFallback' => [
                 'options' => [
