@@ -6,27 +6,28 @@
     <body>
 Test
 <?= $test ?>
-<?= ($_->escapeHtml)('teszt & test') ?>
-<?= ($_->escapeHtml)('<proba>') ?>
-<?= ($_->escapeHtml)('pr"o`b\'a') ?>
+<?= ($_->escapeHtml)('start & test') ?>
+<?= ($_->escapeHtml)('<tag>') ?>
+<?= ($_->escapeHtml)('qu"o`t\'es') ?>
         <div <?= ($_->htmlAttributes)(['style' => ['width' => 80, 'height' => '90px'], 'class' => 'Main']) ?>>
             Proba
         </div>
         <script>
         <?php $input = <<<INPUT
-bar&quot;; alert(&quot;Meow!&quot;); var xss=&quot;true
+sta&quot;;  alert(&quot;IGotYou!&quot;); var xss=&quot;true
 INPUT;
 ?>
-            var test1 = <?= ($_->escapeJs)('proba1'); ?>;
+            var test1 = <?= ($_->escapeJs)('any1'); ?>;
             var test2 = <?= ($_->escapeJs)('"not" know & <>'); ?>;
-            var test6 = <?= ($_->escapeJs)($input); ?>;
-            var test6 = <?= ($_->escapeJs)(null); ?>;
+            var test3 = <?= ($_->escapeJs)($input); ?>;
+            var test4 = <?= ($_->escapeJs)(null); ?>;
 
-            var test3 = <?= ($_->jsVariable)("'not' know & <>"); ?>;
-            var test3 = <?= ($_->jsVariable)(null); ?>;
-            var test4 = <?= ($_->jsVariable)(['a', 'b', 'c']); ?>;
-            var test5 = <?= ($_->jsVariable)(['a' => '1', 'b', 'c' => 2]); ?>;
-            var test7 = <?= ($_->jsVariable)($input); ?>;
+            var test5 = <?= ($_->jsVariable) ("'not' know & <>"); ?>;
+            var test6 = <?= ($_->jsVariable) (null); ?>;
+            var test7 = <?= ($_->jsVariable) (['a', 'b', 'c']); ?>;
+            var test8 = <?= ($_->jsVariable) (['a' => '1', 'b', 'c' => 2]); ?>;
+            var test9 = <?= ($_->jsVariable) ($input); ?>;
         </script>
+        <?= ($_->escapeHtml)($child1 ?? '[child1]') ?>
     </body>
 </html>
