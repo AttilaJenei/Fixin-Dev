@@ -4,4 +4,4 @@
  * @copyright  Copyright (c) 2016 Attila Jenei
  */
 
-include '../../Fixin/tools/classes/classes.php';
+include '../../Fixin/tools/class-info/classes.php';
