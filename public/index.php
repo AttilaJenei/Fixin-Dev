@@ -9,7 +9,7 @@ $phpStartMemPeak = memory_get_peak_usage();
 $phpStartTime = microtime(true);
 
 (function() {
-/*
+
     // Check host is allowed
     $hosts = ['www.fixin-dev.attila'];
     $requestedHost = $_SERVER['SERVER_NAME'];
@@ -28,10 +28,10 @@ $phpStartTime = microtime(true);
     // Autoloader
     require "{$fixinPath}/classes/Fixin/Base/Autoloader/SimpleAutoloader.php";
     $autoloader = new \Fixin\Base\Autoloader\SimpleAutoloader($config['loader']['prefixes']);
-*/
-    $application = include '../../Fixin/cheats/web.php';
+
+//     $application = include '../../Fixin/cheats/web.php';
     // Application
-//     $application = new \Fixin\Application\Application($config);
+    $application = new \Fixin\Application\Application($config);
     $application->run();
 
 })();
@@ -42,8 +42,6 @@ echo 'Memory usage:     ' . (memory_get_usage() - $phpStartMem) . ' / ' . (memor
 
 $includedFiles = get_included_files();
 
-// $prefix = dirname(reset($includedFiles));
-// $length = mb_strlen($prefix);
 $last = '';
 $list = [];
 
@@ -73,8 +71,6 @@ foreach ($includedFiles as $file) {
     $list[] = str_repeat(' ', $length) . mb_substr($file, $length);
     $last = $file;
 }
-
-// $length++;
 
 echo 'Included files:   ' . count($includedFiles) . '<br />                  ';
 echo implode("<br />                  ", $list);
