@@ -4,19 +4,24 @@
  * @copyright  Copyright (c) 2016 Attila Jenei
  */
 
-return array_replace_recursive(require "{$fixinPath}/config/web.php", [
+return array_replace_recursive(require "$fixinPath/config/web.php", [
     'loader' => [
         'prefixes' => [
-//            'App' => "{$topPath}/classes/App",
-            'Fixin' => "{$fixinPath}/classes/Fixin",
+//            'App' => "$topPath/classes/App",
+            'Fixin' => "$fixinPath/classes/Fixin",
         ]
     ],
     'resourceManager' => [
         'definitions' => [
+            'Base\Storage\Directory\DirectoryStorage' => [
+                'options' => [
+                    'path' => "$topPath/workspace/storage"
+                ]
+            ],
             'View\View\FileResolver' => [
                 'options' => [
                     'paths' => [
-                        "{$topPath}/views",
+                        "$topPath/views",
                     ]
                 ]
             ]
