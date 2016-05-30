@@ -18,7 +18,7 @@ return array_replace_recursive(require "$fixinPath/config/web.php", [
                     'path' => "$topPath/workspace/storage"
                 ]
             ],
-            'View\View\FileResolver' => [
+            'viewFileResolver' => [
                 'options' => [
                     'paths' => [
                         "$topPath/views",
