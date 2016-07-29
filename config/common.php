@@ -7,7 +7,7 @@
 return array_replace_recursive(require "$fixinPath/config/web.php", [
     'loader' => [
         'prefixes' => [
-//            'App' => "$topPath/classes/App",
+            'App' => "$topPath/classes/App",
             'Fixin' => "$fixinPath/classes/Fixin",
         ]
     ],
@@ -16,6 +16,13 @@ return array_replace_recursive(require "$fixinPath/config/web.php", [
             'Base\Storage\Directory\DirectoryStorage' => [
                 'options' => [
                     'path' => "$topPath/workspace/storage"
+                ]
+            ],
+            'System\User\Repository' => [ // TODO entity/repository abstract factory
+                'options' => [
+                    'entityPrototype' => 'System\User\Entity',
+                    'name' => 'system__users',
+                    'storage' => 'fileStorage'
                 ]
             ],
             'viewFileResolver' => [
