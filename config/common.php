@@ -22,8 +22,12 @@ return array_replace_recursive(require "$fixinPath/config/web.php", [
                 'options' => [
                     'entityPrototype' => 'System\User\Entity',
                     'name' => 'system__users',
-                    'storage' => 'fileStorage'
+                    'storage' => 'dbStorage'
                 ]
+            ],
+
+            'dbStorage' => [
+                'class' => 'Model\Storage\Pdo\PdoStorage',
             ],
             'viewFileResolver' => [
                 'options' => [

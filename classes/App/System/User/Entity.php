@@ -23,6 +23,14 @@ class Entity extends \Fixin\Model\Entity\Entity {
      */
     protected $userID;
 
+    protected function collectSaveData(): array {
+        return [
+            'userID' => $this->userID,
+            'name' => $this->name,
+            'email' => $this->email,
+        ];
+    }
+
     public function getEmail(): string {
         return $this->email;
     }
