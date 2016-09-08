@@ -18,6 +18,13 @@ return array_replace_recursive(require "$fixinPath/config/web.php", [
                     'path' => "$topPath/workspace/storage"
                 ]
             ],
+            'System\Group\Repository' => [ // TODO entity/repository abstract factory
+                'options' => [
+                    'entityPrototype' => 'System\Group\Entity',
+                    'name' => 'system__groups',
+                    'storage' => 'dbStorage'
+                ]
+            ],
             'System\User\Repository' => [ // TODO entity/repository abstract factory
                 'options' => [
                     'entityPrototype' => 'System\User\Entity',
@@ -27,7 +34,7 @@ return array_replace_recursive(require "$fixinPath/config/web.php", [
             ],
 
             'dbStorage' => [
-                'class' => 'Model\Storage\Pdo\PdoStorage',
+                'class' => 'Model\Storage\PdoStorage',
             ],
             'viewFileResolver' => [
                 'options' => [
