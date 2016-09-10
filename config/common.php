@@ -34,7 +34,7 @@ return array_replace_recursive(require "$fixinPath/config/web.php", [
             ],
 
             'dbStorage' => [
-                'class' => 'Model\Storage\PdoStorage',
+                'class' => 'Model\Storage\Pdo\PdoStorage',
             ],
             'viewFileResolver' => [
                 'options' => [
