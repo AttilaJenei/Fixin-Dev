@@ -6,6 +6,7 @@
 
 namespace App\Controller;
 
+use App\System\Group\Repository as GroupRepository;
 use App\System\User\Repository as UserRepository;
 use Fixin\Controller\ActionController;
 use Fixin\Delivery\Cargo\HttpCargoInterface;
@@ -13,31 +14,44 @@ use Fixin\Delivery\Cargo\HttpCargoInterface;
 class Index extends ActionController {
 
     public function indexAction(HttpCargoInterface $cargo): HttpCargoInterface {
-        /** @var $repository UserRepository */
+        /** @var $userRepository UserRepository */
         $userRepository = $this->container->get('System\User\Repository');
+
+        /** @var $groupRepository GroupRepository */
         $groupRepository = $this->container->get('System\Group\Repository');
+/*
+        $groupRepository->insert([
+            'name' => 'akarmi',
+            'date' => $groupRepository->createExpression('NOW()')
+        ]);
 
+        $existsRequest = $groupRepository->createRequest();
+        $existsRequest->getWhere()
+        ->notNull('userID')
+        ->in('class', ['4class']);
+*/
         $request = $userRepository->createRequest()
-        ->setAlias('proba');
-
-        $request->getWhere()
-        ->notNull('proba.email')
-        ->compare('text', '<=', 'abcd');
-
-        $request
-        ->join($groupRepository, 'group.groupID', '=', 'proba.groupID-1', 'group')
-        ->setColumns([
-            'date',
-            'string' => 'ezaz',
-            'max' => $request->createExpression('MAX(userID)'),
-            'min' => $request->createExpression('MIN(userID / ?)', [2])
-        ])
-        ->setGroupBy(['test', $request->createExpression('test2')])
-        ->setOrderBy(['test' => 'asc', 'kettes'])
-        ->setLimit(20)
+        ->setAlias('proba')
+//         ->setColumns(['booled'])
         ;
-//         $request->fetchRawData();
-        $request->insertInto($groupRepository);
+//         $request->getWhere()->null('userID');
+
+        /*
+        foreach ($request->fetchRawData() as $item) {
+            print_r($item);
+        }*/
+
+//         $request->setIdFetchEnabled(false);
+
+//         echo $userRepository->createId(300001)->getEntity();
+
+//         die;
+
+        foreach ($request->fetch() as $item) {
+//             echo $item, ', ';
+// echo $item['userID'],', ';
+        }
+
         /*
         $repository->create()
         ->setName('Test')

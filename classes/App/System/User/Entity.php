@@ -6,6 +6,8 @@
 
 namespace App\System\User;
 
+use Fixin\Model\Entity\EntityInterface;
+
 class Entity extends \Fixin\Model\Entity\Entity {
 
     /**
@@ -29,6 +31,14 @@ class Entity extends \Fixin\Model\Entity\Entity {
             'name' => $this->name,
             'email' => $this->email,
         ];
+    }
+
+    public function exchangeArray(array $data): EntityInterface {
+        $this->userID = $data['userID'] ?? null;
+        $this->name = $data['name'] ?? null;
+        $this->email = $data['email'] ?? null;
+
+        return $this;
     }
 
     public function getEmail(): string {
