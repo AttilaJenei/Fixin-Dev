@@ -48,7 +48,8 @@ class Index extends ActionController {
 //         die;
 
         foreach ($request->fetch() as $item) {
-//             echo $item, ', ';
+            echo $item, ', ';
+            die;
 // echo $item['userID'],', ';
         }
 

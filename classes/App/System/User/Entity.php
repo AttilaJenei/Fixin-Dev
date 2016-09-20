@@ -25,7 +25,7 @@ class Entity extends \Fixin\Model\Entity\Entity {
      */
     protected $userID;
 
-    protected function collectSaveData(): array {
+    public function collectSaveData(): array {
         return [
             'userID' => $this->userID,
             'name' => $this->name,

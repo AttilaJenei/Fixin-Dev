@@ -21,6 +21,7 @@ return array_replace_recursive(require "$fixinPath/config/web.php", [
             'System\Group\Repository' => [ // TODO entity/repository abstract factory
                 'options' => [
                     'entityPrototype' => 'System\Group\Entity',
+                    'entityCache' => 'Model\Entity\Cache\RuntimeCache',
                     'name' => 'system__groups',
                     'storage' => 'dbStorage'
                 ]
@@ -28,7 +29,8 @@ return array_replace_recursive(require "$fixinPath/config/web.php", [
             'System\User\Repository' => [ // TODO entity/repository abstract factory
                 'options' => [
                     'entityPrototype' => 'System\User\Entity',
-                    'name' => 'system__users',
+                    'entityCache' => 'Model\Entity\Cache\RuntimeCache',
+                    'name' => 'system__user',
                     'storage' => 'dbStorage'
                 ]
             ],
