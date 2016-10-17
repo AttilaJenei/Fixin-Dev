@@ -16,6 +16,11 @@ class Entity extends \Fixin\Model\Entity\Entity {
     protected $email;
 
     /**
+     * @var GroupEntity|int
+     */
+    protected $group;
+
+    /**
      * @var string
      */
     protected $name;
@@ -30,6 +35,7 @@ class Entity extends \Fixin\Model\Entity\Entity {
             'userID' => $this->userID,
             'name' => $this->name,
             'email' => $this->email,
+            'groupID' => $this->getGroupID()
         ];
     }
 
@@ -49,12 +55,22 @@ class Entity extends \Fixin\Model\Entity\Entity {
         return $this->name;
     }
 
+    public function getGroupID(): int {
+        return is_object($this->group) ? $this->group->getGroupID() : $this->group;
+    }
+
     public function getUserID(): int {
         return $this->userID;
     }
 
     public function setEmail(string $email): self {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function setGroup($group): self {
+        $this->group = $group;
 
         return $this;
     }

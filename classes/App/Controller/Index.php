@@ -46,22 +46,26 @@ class Index extends ActionController {
 //         echo $userRepository->createId(300001)->getEntity();
 
 //         die;
-
+/*
         foreach ($request->fetch() as $item) {
             echo $item, ', ';
-            die;
-// echo $item['userID'],', ';
         }
-
+*/
         /*
-        $repository->create()
+        $entity = $userRepository->create()
         ->setName('Test')
         ->setEmail('test@example.com')
-        ->save();
+        ->setGroup(1);
+
+        echo $entity;
+
+        $entity->save();
+
+        echo $entity;*/
+
 //         $repository->
 //         $repository->create
 //         $entity = $repository->createId(1)->getEntity();
-*/
         return $cargo;
     }
 }
