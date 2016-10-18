@@ -13,29 +13,23 @@ return array_replace_recursive(require "$fixinPath/config/web.php", [
     ],
     'resourceManager' => [
         'definitions' => [
-            'Base\Storage\Directory\DirectoryStorage' => [
-                'options' => [
-                    'path' => "$topPath/workspace/storage"
-                ]
-            ],
             'System\Group\Repository' => [ // TODO entity/repository abstract factory
                 'options' => [
-                    'entityPrototype' => 'System\Group\Entity',
                     'name' => 'system__groups',
-                    'storage' => 'dbStorage'
+                    'storage' => 'dbStorage',
+                    'entityPrototype' => 'System\Group\Entity',
+                    'entityCache' => 'Model\Entity\Cache\RuntimeCache',
                 ]
             ],
             'System\User\Repository' => [ // TODO entity/repository abstract factory
                 'options' => [
-                    'entityPrototype' => 'System\User\Entity',
                     'name' => 'system__users',
-                    'storage' => 'dbStorage'
+                    'storage' => 'dbStorage',
+                    'entityPrototype' => 'System\User\Entity',
+                    'entityCache' => 'Model\Entity\Cache\RuntimeCache',
                 ]
             ],
 
-            'dbStorage' => [
-                'class' => 'Model\Storage\Pdo\PdoStorage',
-            ],
             'viewFileResolver' => [
                 'options' => [
                     'paths' => [
