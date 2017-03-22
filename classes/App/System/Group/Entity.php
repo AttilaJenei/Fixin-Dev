@@ -1,7 +1,10 @@
 <?php
 /**
- * @link       http://www.attilajenei.com
- * @copyright  Copyright (c) 2016 Attila Jenei
+ * Fixin Framework
+ *
+ * Copyright (c) Attila Jenei
+ *
+ * http://www.fixinphp.com
  */
 
 namespace App\System\User;
@@ -23,7 +26,8 @@ class Entity extends \Fixin\Model\Entity\Entity {
      */
     protected $name;
 
-    protected function collectSaveData(): array {
+    public function collectSaveData(): array
+    {
         return [
             'groupID' => $this->groupID,
             'name' => $this->name,

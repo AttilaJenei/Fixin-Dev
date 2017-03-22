@@ -1,7 +1,10 @@
 <?php
 /**
- * @link       http://www.attilajenei.com
- * @copyright  Copyright (c) 2016 Attila Jenei
+ * Fixin Framework
+ *
+ * Copyright (c) Attila Jenei
+ *
+ * http://www.fixinphp.com
  */
 
 return array_replace_recursive(require "$fixinPath/config/web.php", [
