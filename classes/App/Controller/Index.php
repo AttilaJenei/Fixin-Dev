@@ -8,17 +8,17 @@ namespace App\Controller;
 
 use App\System\Group\Repository as GroupRepository;
 use App\System\User\Repository as UserRepository;
-use Fixin\Controller\ActionController;
+use Fixin\Controller\HttpActionController;
 use Fixin\Delivery\Cargo\HttpCargoInterface;
 
-class Index extends ActionController {
+class Index extends HttpActionController {
 
     public function indexAction(HttpCargoInterface $cargo): HttpCargoInterface {
         /** @var $userRepository UserRepository */
-        $userRepository = $this->container->get('System\User\Repository');
+        $userRepository = $this->resourceManager->get('System\User\Repository', UserRepository::class);
 
         /** @var $groupRepository GroupRepository */
-        $groupRepository = $this->container->get('System\Group\Repository');
+        $groupRepository = $this->resourceManager->get('System\Group\Repository', GroupRepository::class);
 /*
         $groupRepository->insert([
             'name' => 'akarmi',
