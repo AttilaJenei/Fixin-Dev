@@ -9,6 +9,8 @@ if ($_POST) {
     $phpStartMemPeak = memory_get_peak_usage();
     $phpStartTime = microtime(true);
 
+    $config = include dirname(__DIR__) . '/config/loader.php';
+
     $application = include '../../Fixin/cheats/web.php';
     $application->run();
 
@@ -22,15 +24,16 @@ if ($_POST) {
 		<meta charset="utf-8">
 	</head>
 	<body onload="loaded()">
-		<form method="post">
-			<input type="text" name="name" value="John Jemson">
-			<input type="text" name="city" value="London">
-			<input type="email" name="email" value="john.jemson@example.com">
+		<form method="post" enctype="multipart/form-data">
+			<input type="text" name="name" value="John Jemson"><br />
+			<input type="text" name="city" value="London"><br />
+			<input type="email" name="email" value="john.jemson@example.com"><br />
+            <input type="file" name="singleFile" /><br />
+            <input type="file" name="singleFileArray[az][1]" /><br />
+            <input type="file" name="multiFile[]" multiple="multiple" /><br />
+            <input type="file" name="multiFileArray[hah][2][]" multiple="multiple" /><br />
+            <button type="submit">Submit</button>
 		</form>
-		<script>
-			function loaded() {
-				document.querySelector('form').submit()
-			}
-		</script>
+
 	</body>
 </html>

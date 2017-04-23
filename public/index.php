@@ -9,21 +9,7 @@ $phpStartMemPeak = memory_get_peak_usage();
 $phpStartTime = microtime(true);
 
 (function() {
-
-    // Check host is allowed
-    $hosts = ['www.fixin-dev.attila'];
-    $requestedHost = $_SERVER['SERVER_NAME'];
-
-    if (!in_array($requestedHost, $hosts)) {
-        header("HTTP/1.1 404 Not Found");
-        echo '<!DOCTYPE html><html><body><h1>Not Found</h1></body></html>';
-
-        exit;
-    }
-
-    // Load config
-    $topPath = dirname(__DIR__);
-    $config = require "{$topPath}/config/{$requestedHost}.php";
+    $config = include dirname(__DIR__) . '/config/loader.php';
 
     // Autoloader
     require "{$fixinPath}/classes/Fixin/Base/Autoloader/SimpleAutoloader.php";

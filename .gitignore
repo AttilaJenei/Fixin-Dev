@@ -4,3 +4,4 @@
 _work
 /config/**/*
 !/config/common.php
+!/config/loader.php
