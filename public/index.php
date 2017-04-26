@@ -11,15 +11,8 @@ $phpStartTime = microtime(true);
 (function() {
     $config = include dirname(__DIR__) . '/config/loader.php';
 
-    // Autoloader
-    require "{$fixinPath}/classes/Fixin/Base/Autoloader/SimpleAutoloader.php";
-    $autoloader = new \Fixin\Base\Autoloader\SimpleAutoloader($config['loader']['prefixes']);
-
-//     $application = include '../../Fixin/cheats/web.php'; TODO
-    // Application
-    $application = new \Fixin\Application\Application($config);
+    $application = include "{$fixinPath}/cheats/web.php";
     $application->run();
-
 })();
 
 echo '<pre>---<br />';
