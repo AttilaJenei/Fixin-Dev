@@ -33,7 +33,7 @@ return array_replace_recursive(require "$fixinPath/config/web.php", [
                 ]
             ],
 
-            'viewFileResolver' => [
+            'templateFileResolver' => [
                 'options' => [
                     'paths' => [
                         "$topPath/templates",
