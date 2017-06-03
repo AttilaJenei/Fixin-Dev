@@ -11,7 +11,7 @@ if ($_POST) {
 
     $config = include dirname(__DIR__) . '/config/loader.php';
 
-    $application = include '../../Fixin/cheats/web.php';
+    $application = include '../../Fixin/boosts/web.php';
     $application->run();
 
     echo 'Run: ' . number_format((microtime(true) - $phpStartTime) * 1000, 4) . 'ms, ' . (memory_get_usage() - $phpStartMem) . ' / ' . (memory_get_peak_usage() - $phpStartMemPeak) . ' bytes';
