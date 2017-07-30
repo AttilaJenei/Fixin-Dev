@@ -6,19 +6,20 @@
 
 namespace App\Controller;
 
-use App\System\Group\Repository as GroupRepository;
-use App\System\User\Repository as UserRepository;
+use App\System\Repository\Groups;
+use App\System\Repository\Users;
 use Fixin\Controller\HttpActionController;
 use Fixin\Delivery\Cargo\HttpCargoInterface;
 
 class Index extends HttpActionController {
 
     public function indexAction(HttpCargoInterface $cargo): HttpCargoInterface {
-        /** @var $userRepository UserRepository */
-        $userRepository = $this->resourceManager->get('System\User\Repository', UserRepository::class);
+        /** @var Users $users */
+        $users = $this->resourceManager->get('*\System\Repository\Users', Users::class);
 
-        /** @var $groupRepository GroupRepository */
-        $groupRepository = $this->resourceManager->get('System\Group\Repository', GroupRepository::class);
+        /** @var Groups $groups */
+        $groups = $this->resourceManager->get('*\System\Repository\Groups', Groups::class);
+
 /*
         $groupRepository->insert([
             'name' => 'akarmi',
@@ -30,16 +31,17 @@ class Index extends HttpActionController {
         ->notNull('userID')
         ->in('class', ['4class']);
 */
-        $request = $userRepository->createRequest()
+        $request = $users->createRequest()
         ->setAlias('proba')
 //         ->setColumns(['booled'])
         ;
-//         $request->getWhere()->null('userID');
 
-        /*
+
+         $request->getWhere()->null('userID');
+
         foreach ($request->fetchRawData() as $item) {
             print_r($item);
-        }*/
+        }
 
 //         $request->setIdFetchEnabled(false);
 

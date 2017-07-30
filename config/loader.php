@@ -8,7 +8,7 @@
  */
 
 // Check host is allowed
-$hosts = ['www.fixin-dev.attila'];
+$hosts = ['www.dev.fixin'];
 $requestedHost = $_SERVER['SERVER_NAME'];
 
 if (!in_array($requestedHost, $hosts)) {

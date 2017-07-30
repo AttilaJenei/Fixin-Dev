@@ -7,10 +7,12 @@
  * http://www.fixinphp.com
  */
 
-namespace App\System\User;
+namespace App\System\Entity;
 
-class Entity extends \Fixin\Model\Entity\Entity {
+use Fixin\Model\Entity\Entity;
 
+class Group extends Entity
+{
     /**
      * @var string
      */
@@ -35,31 +37,37 @@ class Entity extends \Fixin\Model\Entity\Entity {
         ];
     }
 
-    public function getEmail(): string {
+    public function getEmail(): string
+    {
         return $this->email;
     }
 
-    public function getGroupID(): int {
+    public function getGroupID(): int
+    {
         return $this->groupID;
     }
 
-    public function getName(): string {
+    public function getName(): string
+    {
         return $this->name;
     }
 
-    public function setEmail(string $email): self {
+    public function setEmail(string $email): self
+    {
         $this->email = $email;
 
         return $this;
     }
 
-    public function setGroupID(int $groupID): self {
+    public function setGroupID(int $groupID): self
+    {
         $this->groupID = $groupID;
 
         return $this;
     }
 
-    public function setName(string $name): self {
+    public function setName(string $name): self
+    {
         $this->name = $name;
 
         return $this;

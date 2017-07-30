@@ -4,10 +4,12 @@
  * @copyright  Copyright (c) 2016 Attila Jenei
  */
 
-namespace App\System\Group;
+namespace App\System\Repository;
 
-class Repository extends \Fixin\Model\Repository\Repository {
+use Fixin\Model\Repository\Repository;
 
+class Groups extends Repository
+{
     protected $autoIncrementColumn = 'groupID';
     protected $primaryKey = ['groupID'];
 }

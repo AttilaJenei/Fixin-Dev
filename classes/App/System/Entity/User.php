@@ -4,19 +4,20 @@
  * @copyright  Copyright (c) 2016 Attila Jenei
  */
 
-namespace App\System\User;
+namespace App\System\Entity;
 
+use Fixin\Model\Entity\Entity;
 use Fixin\Model\Entity\EntityInterface;
 
-class Entity extends \Fixin\Model\Entity\Entity {
-
+class User extends Entity
+{
     /**
      * @var string
      */
     protected $email;
 
     /**
-     * @var GroupEntity|int
+     * @var Group|int
      */
     protected $group;
 
@@ -30,7 +31,8 @@ class Entity extends \Fixin\Model\Entity\Entity {
      */
     protected $userID;
 
-    public function collectSaveData(): array {
+    public function collectSaveData(): array
+    {
         return [
             'userID' => $this->userID,
             'name' => $this->name,
@@ -39,7 +41,8 @@ class Entity extends \Fixin\Model\Entity\Entity {
         ];
     }
 
-    public function exchangeArray(array $data): EntityInterface {
+    public function exchangeArray(array $data): EntityInterface
+    {
         $this->userID = $data['userID'] ?? null;
         $this->name = $data['name'] ?? null;
         $this->email = $data['email'] ?? null;
@@ -47,41 +50,49 @@ class Entity extends \Fixin\Model\Entity\Entity {
         return $this;
     }
 
-    public function getEmail(): string {
+    public function getEmail(): string
+    {
         return $this->email;
     }
 
-    public function getName(): string {
+    public function getName(): string
+    {
         return $this->name;
     }
 
-    public function getGroupID(): int {
+    public function getGroupID(): int
+    {
         return is_object($this->group) ? $this->group->getGroupID() : $this->group;
     }
 
-    public function getUserID(): int {
+    public function getUserID(): int
+    {
         return $this->userID;
     }
 
-    public function setEmail(string $email): self {
+    public function setEmail(string $email): self
+    {
         $this->email = $email;
 
         return $this;
     }
 
-    public function setGroup($group): self {
+    public function setGroup($group): self
+    {
         $this->group = $group;
 
         return $this;
     }
 
-    public function setName(string $name): self {
+    public function setName(string $name): self
+    {
         $this->name = $name;
 
         return $this;
     }
 
-    public function setUserID(int $userID): self {
+    public function setUserID(int $userID): self
+    {
         $this->userID = $userID;
 
         return $this;
