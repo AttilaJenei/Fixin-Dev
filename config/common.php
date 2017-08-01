@@ -10,7 +10,7 @@ return array_replace_recursive(require "$fixinPath/config/web.php", [
     'loader' => [
         'prefixes' => [
             'App' => "$topPath/classes/App",
-            'Fixin' => "$fixinPath/classes/Fixin",
+            'Fixin' => "$fixinPath/classes",
         ]
     ],
     'resourceManager' => [

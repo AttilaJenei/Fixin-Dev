@@ -10,27 +10,31 @@ use App\System\Repository\Groups;
 use App\System\Repository\Users;
 use Fixin\Controller\HttpActionController;
 use Fixin\Delivery\Cargo\HttpCargoInterface;
+use Fixin\Support\Debug;
 
 class Index extends HttpActionController {
 
     public function indexAction(HttpCargoInterface $cargo): HttpCargoInterface {
         /** @var Users $users */
-        $users = $this->resourceManager->get('*\System\Repository\Users', Users::class);
+        $users = $this->resourceManager->get('repository.system.users', Users::class);
 
         /** @var Groups $groups */
-        $groups = $this->resourceManager->get('*\System\Repository\Groups', Groups::class);
+        $groups = $this->resourceManager->get('repository.system.groups', Groups::class);
 
-/*
-        $groupRepository->insert([
+        $groups->insert([
             'name' => 'akarmi',
-            'date' => $groupRepository->createExpression('NOW()')
+            'date' => $groups->createExpression('NOW()')
         ]);
 
-        $existsRequest = $groupRepository->createRequest();
+        $existsRequest = $groups->createRequest();
         $existsRequest->getWhere()
         ->notNull('userID')
         ->in('class', ['4class']);
-*/
+
+        Debug::peek($existsRequest);
+        die;
+
+
         $request = $users->createRequest()
         ->setAlias('proba')
 //         ->setColumns(['booled'])

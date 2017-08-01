@@ -11,7 +11,7 @@ $phpStartTime = microtime(true);
 (function() {
     $config = include dirname(__DIR__) . '/config/loader.php';
 
-    $application = include "{$fixinPath}/boosts/web.php";
+    $application = include '../../Fixin/boosts/web.php';
     $application->run();
 })();
 
